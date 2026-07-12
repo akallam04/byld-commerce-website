@@ -4,6 +4,8 @@ A story-driven redesign of [byldcommerce.com](https://www.byldcommerce.com), an 
 
 ![Hero - "You made something people love. Selling it became the second job."](docs/screenshots/hero.png)
 
+**Live site:** [akallam04.github.io/byld-commerce-website](https://akallam04.github.io/byld-commerce-website/)
+
 **Run it locally:** `python3 -m http.server 4870` from the repo root, then open `localhost:4870`. No build step, no dependencies.
 
 ## The assignment

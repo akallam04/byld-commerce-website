@@ -1,4 +1,4 @@
- e# Porting the BYLD site to Squarespace
+# Porting the BYLD site to Squarespace
 
 Everything you need is in the `squarespace/` folder, already split into
 ready-to-paste files. You will not be arranging Squarespace blocks, images,
