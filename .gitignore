@@ -1,0 +1,7 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# internal working notes, not part of the public project
+MEETING.md
+HANDOFF.md
