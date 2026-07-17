@@ -1,6 +1,6 @@
 # BYLD Commerce - Website Redesign
 
-A story-driven redesign of [byldcommerce.com](https://www.byldcommerce.com), an ecommerce growth agency in Provo, Utah. Designed and hand-coded from scratch during my web development internship there, then deployed to the company's Squarespace account through a custom code pipeline.
+A story-driven redesign of [byldcommerce.com](https://www.byldcommerce.com), an ecommerce growth agency in Lehi, Utah. Designed and hand-coded from scratch during my web development internship there, then deployed to the company's Squarespace account through a custom code pipeline.
 
 ![Hero - "You made something people love. Selling it became the second job."](docs/screenshots/hero.png)
 
