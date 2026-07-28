@@ -608,15 +608,23 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   gap: clamp(40px, 6vw, 100px);
-  margin-top: clamp(50px, 7vw, 90px);
+  margin-top: clamp(24px, 3vw, 40px);
 }
 
+/* top-aligned rather than centred: centring in a tall sticky box parked the
+   stage far below the first chapter on arrival, leaving a dead screen */
 .story__visual {
   position: sticky;
-  top: 0;
-  height: 100vh;
+  top: 74px;
+  height: calc(100vh - 74px);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+}
+
+/* short laptop screens: shrink the stage so it clears the fold on arrival,
+   before sticky takes over */
+@media (max-height: 820px) {
+  .stage { width: min(360px, 100%); }
 }
 
 .stage {
@@ -750,11 +758,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 [data-state="4"] .stage__card--walmart { opacity: 1; transform: translate(52%, 62%) rotate(0deg); }
 [data-state="4"] .stage__byld { transform: translate(-50%, -218%) scale(1) rotate(-5deg); }
 
+/* the leading pad used to park chapter 01 well below the stage, leaving a
+   dead screen on arrival; it now lands level with the stage */
 .story__steps {
   display: flex;
   flex-direction: column;
   gap: 38vh;
-  padding: 24vh 0 30vh;
+  padding: 12vh 0 30vh;
 }
 
 .step { max-width: 460px; }
@@ -1220,18 +1230,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: var(--ink-soft);
 }
 
-.rcard--accent .rcard__who b {
-  display: block;
-  font-family: var(--sans);
-  font-size: 0.98rem;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 3px;
-}
-
-.rcard--accent .rcard__who b { color: var(--cream); }
-
-.rcard__who { color: var(--cream-soft); }
+/* cream only on the dark card; unscoped it made the meta line on the light
+   cards nearly invisible */
+.rcard--accent .rcard__who { color: var(--cream-soft); }
 
 .results__hint {
   padding: 0 var(--gutter);
@@ -1642,74 +1643,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .acc--faq .acc__btn { grid-template-columns: 44px 1fr 36px; }
 }
 
-/* ---------- chapter rail ---------- */
-
-.rail {
-  position: fixed;
-  left: 22px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 8990;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding-left: 16px;
-}
-
-.rail__line {
-  position: absolute;
-  left: 0;
-  top: 2px;
-  bottom: 2px;
-  width: 1px;
-  background: rgba(23, 19, 16, 0.14);
-}
-
-.rail__line i {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  background: var(--accent);
-  transform-origin: top;
-  transform: scaleY(0);
-}
-
-.rail a {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  text-decoration: none;
-}
-
-.rail a b {
-  font-family: var(--label);
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  color: rgba(23, 19, 16, 0.38);
-  transition: color 0.3s var(--ease);
-}
-
-.rail a span {
-  font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent-deep);
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
-  white-space: nowrap;
-}
-
-.rail a:hover b, .rail a.is-active b { color: var(--ink); }
-.rail a:hover span, .rail a.is-active span { opacity: 1; transform: translateX(0); }
-.rail a.is-active b { color: var(--accent-deep); }
-
-@media (max-width: 1280px) { .rail { display: none; } }
-
 /* ---------- client marquee units with channel tags ---------- */
 
 .munit { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 2px; }
@@ -1963,8 +1896,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* ---------- capture mode (README screenshots) ---------- */
 
 .is-capture { scroll-behavior: auto; }
-.is-capture .preloader,
-.is-capture .rail { display: none; }
+.is-capture .preloader { display: none; }
 
 .is-capture [data-reveal],
 .is-capture [data-reveal-line] {
@@ -2009,9 +1941,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 #page .acc--faq .acc__panel-inner a, body .acc--faq .acc__panel-inner a { color: var(--accent-deep); }
 
 /* round-3 components: colors re-asserted for Squarespace */
-#page .rail a b, body .rail a b { color: rgba(23, 19, 16, 0.38); }
-#page .rail a.is-active b, body .rail a.is-active b { color: var(--accent-deep); }
-#page .rail a span, body .rail a span { color: var(--accent-deep); }
 #page .munit em, body .munit em { color: var(--ink); }
 #page .munit small, body .munit small { color: var(--accent-deep); }
 #page .versus__col h4, body .versus__col h4 { color: rgba(23, 19, 16, 0.45); }

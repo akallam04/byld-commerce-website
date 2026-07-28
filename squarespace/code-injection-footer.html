@@ -9,7 +9,8 @@
   /* capture mode for the README screenshots: ?capture=<section id> reveals
      everything instantly and shifts the page with a paint transform,
      because headless Chrome blanks out on fragments and scroll positions */
-  const captureId = new URLSearchParams(location.search).get('capture');
+  const captureParams = new URLSearchParams(location.search);
+  const captureId = captureParams.get('capture');
   if (captureId !== null) {
     document.documentElement.classList.add('is-capture');
     requestAnimationFrame(() => {
@@ -17,13 +18,17 @@
         ? parseInt(captureId.slice(3), 10)
         : (document.getElementById(captureId) || {}).offsetTop;
       if (px) document.body.style.transform = `translateY(-${px}px)`;
+      /* &state=N pins the story stage so a shot can show a chosen chapter */
+      const stageState = captureParams.get('state');
+      const visual = document.querySelector('.story__visual');
+      if (stageState && visual) visual.dataset.state = stageState;
     });
   }
 
   /* Hosts like Squarespace wrap code blocks in positioned containers that
      can trap or clip fixed overlays. Re-parent them to <body> so they
      always live in the root stacking context. No-op on the plain site. */
-  ['.grain', '.header', '.byld-header', '.menu', '.preloader', '.rail'].forEach((sel) => {
+  ['.grain', '.header', '.byld-header', '.menu', '.preloader'].forEach((sel) => {
     const el = document.querySelector(sel);
     if (el && el.parentElement !== document.body) document.body.appendChild(el);
   });
@@ -125,7 +130,8 @@
   const visual = document.querySelector('.story__visual');
   const steps = document.querySelectorAll('.step');
 
-  if (visual && steps.length) {
+  /* a screenshot pinning a chapter must not be overwritten by the observer */
+  if (visual && steps.length && !captureParams.get('state')) {
     const stepIO = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -248,39 +254,6 @@
     });
   });
 
-  /* ---------- chapter rail ---------- */
-
-  const rail = document.querySelector('.rail');
-
-  if (rail) {
-    const links = rail.querySelectorAll('a[data-rail]');
-    const sections = [...links]
-      .map((a) => document.getElementById(a.dataset.rail))
-      .filter(Boolean);
-
-    if (sections.length) {
-      const railIO = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            links.forEach((a) => a.classList.toggle('is-active', a.dataset.rail === entry.target.id));
-          }
-        });
-      }, { rootMargin: '-40% 0px -50% 0px' });
-      sections.forEach((sec) => railIO.observe(sec));
-    }
-
-    /* progress line: how far down the page we are */
-    const bar = rail.querySelector('.rail__line i');
-    if (bar) {
-      const onScroll = () => {
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        bar.style.transform = `scaleY(${max > 0 ? Math.min(window.scrollY / max, 1) : 0})`;
-      };
-      onScroll();
-      window.addEventListener('scroll', onScroll, { passive: true });
-    }
-  }
-
   /* ---------- hero live system ---------- */
 
   /* Runs the pitch as a loop: an alert fires on a platform, the packet
@@ -392,7 +365,9 @@
      stay as-is. Stats with no leading number are left alone. */
   const counters = document.querySelectorAll('.hero__proof-item b, .rcard__stat');
 
-  if (counters.length && !reduceMotion) {
+  /* capture mode leaves the final figures in place: a screenshot caught
+     mid-count would publish a number the client never earned */
+  if (counters.length && !reduceMotion && captureId === null) {
     const ease = (t) => 1 - Math.pow(1 - t, 3);
     const runCount = (node) => {
       const text = node.firstChild;

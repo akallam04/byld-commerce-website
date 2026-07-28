@@ -42,7 +42,6 @@ Two decisions drive everything else.
 | How we work | Three principles in the agency's own direct voice |
 | FAQ | Six questions in that same voice, including who BYLD is not a fit for |
 | Contact | Qualifying revenue dropdown, mirroring the hero's language |
-| Chapter rail | A fixed page index tracking scroll position, desktop only |
 
 ![The four-chapter scroll story](docs/screenshots/story.png)
 
@@ -68,7 +67,7 @@ Plain HTML, CSS, and vanilla JavaScript. No frameworks, no build step. That was 
 
 Under the hood:
 
-- IntersectionObserver drives the scroll reveals, the four-state story stage, and the chapter rail
+- IntersectionObserver drives the scroll reveals, the four-state story stage, and the count-up stats
 - The hero runs a single state machine over one 440x460 SVG viewBox, pausing itself when off screen
 - CSS `position: sticky` powers the scrollytelling; state changes are pure class swaps and CSS transitions
 - The flywheel is an SVG `textPath` ring rotating on a CSS animation
@@ -90,7 +89,7 @@ The company runs on Squarespace, so the hand-coded site ships there through a pa
 Platform problems the port had to solve, all documented in [PORTING.md](PORTING.md):
 
 - Squarespace injects its own heading and link colors, so every color is re-asserted with explicit higher-specificity rules
-- Squarespace's section wrappers trap `position: fixed` overlays, so the script re-parents the header, menu, rail, and preloader to `body` on load
+- Squarespace's section wrappers trap `position: fixed` overlays, so the script re-parents the header, menu, and preloader to `body` on load
 - The Squarespace editor swallows hash navigation, so anchor scrolling is script-driven
 - Squarespace's native header also uses the class `header`, so the build script renames ours to `byld-header` during generation
 
