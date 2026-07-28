@@ -36,7 +36,8 @@ turn = between(html, '<!-- ============ THE TURN', '<!-- ============ SERVICES')
 services = between(html, '<!-- ============ SERVICES', '<!-- ============ CHANNELS')
 channels = between(html, '<!-- ============ CHANNELS', '<!-- ============ RESULTS')
 results = between(html, '<!-- ============ RESULTS', '<!-- ============ PRINCIPLES')
-principles = between(html, '<!-- ============ PRINCIPLES', '<!-- ============ CONTACT')
+principles = between(html, '<!-- ============ PRINCIPLES', '<!-- ============ FAQ')
+faq = between(html, '<!-- ============ FAQ', '<!-- ============ CONTACT')
 contact = between(html, '<!-- ============ CONTACT', '</main>')
 footer = between(html, '<footer class="footer">', '</footer>') + '</footer>'
 
@@ -122,6 +123,7 @@ files = {
     'sections/06-channels.html': note + channels + '\n',
     'sections/07-results.html': note + results + '\n',
     'sections/08-principles.html': note + principles + '\n',
+    'sections/08b-faq.html': note + faq + '\n',
     'sections/09-contact.html': note + contact + '\n',
     'sections/10-footer.html': note + footer + '\n',
 }

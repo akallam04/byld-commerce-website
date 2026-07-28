@@ -14,6 +14,20 @@
 
   <div class="grain" aria-hidden="true"></div>
 
+
+  <!-- chapter rail: fixed page index, desktop only -->
+  <nav class="rail" aria-label="Page index">
+    <span class="rail__line" aria-hidden="true"><i></i></span>
+    <a href="#story" data-rail="story"><b>01</b><span>The story</span></a>
+    <a href="#turn" data-rail="turn"><b>02</b><span>The turn</span></a>
+    <a href="#services" data-rail="services"><b>03</b><span>What we do</span></a>
+    <a href="#channels" data-rail="channels"><b>04</b><span>Channels</span></a>
+    <a href="#results" data-rail="results"><b>05</b><span>Results</span></a>
+    <a href="#how-we-work" data-rail="how-we-work"><b>06</b><span>How we work</span></a>
+    <a href="#faq" data-rail="faq"><b>07</b><span>FAQ</span></a>
+    <a href="#contact" data-rail="contact"><b>08</b><span>Contact</span></a>
+  </nav>
+
   <div class="preloader" aria-hidden="true">
     <div class="preloader__word">
       <span>B</span><span>Y</span><span>L</span><span>D</span><span class="preloader__reg">®</span>
@@ -58,27 +72,106 @@
     <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="hero__inner">
-        <p class="eyebrow" data-reveal>Ecommerce growth, end to end · Provo, Utah</p>
-        <h1 class="hero__title">
-          <span class="line"><span data-reveal-line>You made something</span></span>
-          <span class="line"><span data-reveal-line><em>people love.</em></span></span>
-          <span class="line"><span data-reveal-line>Selling it became</span></span>
-          <span class="line"><span data-reveal-line>the <em>second job.</em></span></span>
-        </h1>
-        <div class="hero__foot" data-reveal>
-          <p class="hero__sub">Amazon wants one thing. TikTok wants another. Meta wants five new creatives by Friday. BYLD is the team that runs all of it for you, so you can get back to the part only you can do.</p>
-          <div class="hero__ctas">
-            <a class="btn btn--solid btn--lg" href="#contact" data-magnetic>Book a free consultation</a>
-            <a class="btn btn--ghost btn--lg" href="#story" data-magnetic>Sound familiar?</a>
+        <div class="hero__copy">
+          <p class="eyebrow" data-reveal>Full-service ecommerce growth · Provo, Utah</p>
+          <h1 class="hero__title">
+            <span class="line"><span data-reveal-line>You build</span></span>
+            <span class="line"><span data-reveal-line><em>the product.</em></span></span>
+            <span class="line"><span data-reveal-line>We build</span></span>
+            <span class="line"><span data-reveal-line><em>the demand.</em></span></span>
+          </h1>
+          <div class="hero__foot" data-reveal>
+            <p class="hero__sub">BYLD runs your Amazon, Walmart, TikTok, and Meta as one team: listings, ads, creative, and the operations behind them. We've taken a brand from $10K to $20M on Meta and grown another 13x on Amazon. You get the growth without the second job.</p>
+            <div class="hero__ctas">
+              <a class="btn btn--solid btn--lg" href="#contact" data-magnetic>Get a free consultation</a>
+              <a class="btn btn--ghost btn--lg" href="#results" data-magnetic>See the numbers</a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="hero__chips" aria-hidden="true">
-        <div class="chip chip--1"><i></i>Amazon · Listing suppressed, again</div>
-        <div class="chip chip--2"><i></i>Meta · Creative fatigue detected</div>
-        <div class="chip chip--3"><i></i>TikTok · The algorithm changed. Again.</div>
-        <div class="chip chip--4"><i></i>Walmart · 14 new requirements</div>
+        <!-- live system: alerts fire, travel down the wires, BYLD clears them -->
+        <div class="hero__system" data-reveal>
+          <svg class="sys" viewBox="0 0 440 460" role="img" aria-label="Platform alerts routing into BYLD and being cleared">
+        <g class="sys__wire" data-wire="amz">
+          <path class="sys__wire-base" d="M 196 45 C 226 74, 236 108, 244 150" pathLength="100"></path>
+          <path class="sys__wire-pulse" d="M 196 45 C 226 74, 236 108, 244 150" pathLength="100"></path>
+        </g>
+        <g class="sys__wire" data-wire="meta">
+          <path class="sys__wire-base" d="M 300 140 C 292 160, 282 178, 268 198" pathLength="100"></path>
+          <path class="sys__wire-pulse" d="M 300 140 C 292 160, 282 178, 268 198" pathLength="100"></path>
+        </g>
+        <g class="sys__wire" data-wire="tik">
+          <path class="sys__wire-base" d="M 192 327 C 214 306, 224 288, 238 264" pathLength="100"></path>
+          <path class="sys__wire-pulse" d="M 192 327 C 214 306, 224 288, 238 264" pathLength="100"></path>
+        </g>
+        <g class="sys__wire" data-wire="wal">
+          <path class="sys__wire-base" d="M 302 384 C 294 350, 284 320, 272 276" pathLength="100"></path>
+          <path class="sys__wire-pulse" d="M 302 384 C 294 350, 284 320, 272 276" pathLength="100"></path>
+        </g>
+
+            <g class="sys__core" data-core>
+              <circle class="sys__ring sys__ring--1" cx="250" cy="232" r="58"></circle>
+              <circle class="sys__ring sys__ring--2" cx="250" cy="232" r="58"></circle>
+              <circle class="sys__spin" cx="250" cy="232" r="70"></circle>
+              <circle class="sys__disc" cx="250" cy="232" r="56"></circle>
+              <text class="sys__mark" x="250" y="228">BYLD</text>
+              <text class="sys__state" x="250" y="250" data-core-label>ON IT</text>
+            </g>
+
+        <g class="sys__node" data-node="amz" style="--d:0.0s">
+          <g class="sys__float">
+            <rect class="sys__chip" x="6" y="18" width="196" height="54" rx="14"></rect>
+            <circle class="sys__dot" cx="30" cy="45" r="5"></circle>
+            <path class="sys__tick" d="M 24 45 l 4.5 5 l 8 -9.5"></path>
+            <text class="sys__plat" x="48" y="41">Amazon</text>
+            <text class="sys__issue" x="48" y="59">Listing suppressed</text>
+          </g>
+        </g>
+        <g class="sys__node" data-node="meta" style="--d:0.9s">
+          <g class="sys__float">
+            <rect class="sys__chip" x="250" y="86" width="196" height="54" rx="14"></rect>
+            <circle class="sys__dot" cx="274" cy="113" r="5"></circle>
+            <path class="sys__tick" d="M 268 113 l 4.5 5 l 8 -9.5"></path>
+            <text class="sys__plat" x="292" y="109">Meta</text>
+            <text class="sys__issue" x="292" y="127">Creative fatigue</text>
+          </g>
+        </g>
+        <g class="sys__node" data-node="tik" style="--d:1.8s">
+          <g class="sys__float">
+            <rect class="sys__chip" x="2" y="300" width="196" height="54" rx="14"></rect>
+            <circle class="sys__dot" cx="26" cy="327" r="5"></circle>
+            <path class="sys__tick" d="M 20 327 l 4.5 5 l 8 -9.5"></path>
+            <text class="sys__plat" x="44" y="323">TikTok</text>
+            <text class="sys__issue" x="44" y="341">Algorithm changed</text>
+          </g>
+        </g>
+        <g class="sys__node" data-node="wal" style="--d:2.7s">
+          <g class="sys__float">
+            <rect class="sys__chip" x="238" y="384" width="196" height="54" rx="14"></rect>
+            <circle class="sys__dot" cx="262" cy="411" r="5"></circle>
+            <path class="sys__tick" d="M 256 411 l 4.5 5 l 8 -9.5"></path>
+            <text class="sys__plat" x="280" y="407">Walmart</text>
+            <text class="sys__issue" x="280" y="425">14 new requirements</text>
+          </g>
+        </g>
+          </svg>
+          <p class="hero__system-cap"><span data-core-cap>Four platforms. One team clearing the queue.</span></p>
+        </div>
+
+        <div class="hero__proof" data-reveal>
+          <a class="hero__proof-item" href="https://www.byldcommerce.com/corks-popcorn" target="_blank" rel="noopener">
+            <b>13x</b><small>revenue growth<br>Corks Popcorn</small><span class="hero__proof-link">Case study <i>&rarr;</i></span>
+          </a>
+          <a class="hero__proof-item" href="https://www.byldcommerce.com/bucket-golf" target="_blank" rel="noopener">
+            <b>$10K&nbsp;to&nbsp;$20M</b><small>on full-funnel Meta<br>Bucket Golf</small><span class="hero__proof-link">Case study <i>&rarr;</i></span>
+          </a>
+          <a class="hero__proof-item" href="https://www.byldcommerce.com/andi" target="_blank" rel="noopener">
+            <b>584%</b><small>growth in 12 months<br>Andi</small><span class="hero__proof-link">Case study <i>&rarr;</i></span>
+          </a>
+          <a class="hero__proof-item" href="https://www.byldcommerce.com/qb54" target="_blank" rel="noopener">
+            <b>$250K</b><small>profit in 45 days<br>QB54</small><span class="hero__proof-link">Case study <i>&rarr;</i></span>
+          </a>
+        </div>
       </div>
 
       <div class="hero__scroll" aria-hidden="true"><span></span></div>
@@ -90,13 +183,17 @@
         <span>Amazon</span><i>✺</i><span>Meta</span><i>✺</i><span>TikTok Shop</span><i>✺</i><span>Walmart</span><i>✺</i><span>TikTok Ads</span><i>✺</i><span>Google</span><i>✺</i><span>Email</span><i>✺</i><span>International</span><i>✺</i>
         <span>Amazon</span><i>✺</i><span>Meta</span><i>✺</i><span>TikTok Shop</span><i>✺</i><span>Walmart</span><i>✺</i><span>TikTok Ads</span><i>✺</i><span>Google</span><i>✺</i><span>Email</span><i>✺</i><span>International</span><i>✺</i>
       </div>
+      <div class="marquee__track marquee__track--brands">
+        <span class="munit"><em>Bucket Golf</em><small>Meta</small></span><i>✺</i><span class="munit"><em>Corks Popcorn</em><small>Amazon</small></span><i>✺</i><span class="munit"><em>Andi</em><small>Marketplace</small></span><i>✺</i><span class="munit"><em>Luna</em><small>Amazon Ads</small></span><i>✺</i><span class="munit"><em>Little Gripsters</em><small>TikTok</small></span><i>✺</i><span class="munit"><em>Geo Project</em><small>Organic + paid</small></span><i>✺</i><span class="munit"><em>QB54</em><small>Meta + Amazon</small></span><i>✺</i><span class="munit"><em>Crae Home</em><small>Ads + listings</small></span><i>✺</i><span class="munit"><em>Teton Tackle</em><small>2,000+ units in 90 days</small></span><i>✺</i><span class="munit"><em>Agave Sweet</em><small>TACOS 79% to 40%</small></span><i>✺</i><span class="munit"><em>MOOD</em><small>117% in a year</small></span><i>✺</i><span class="munit"><em>Copper</em><small>TikTok Shop</small></span><i>✺</i>
+        <span class="munit"><em>Bucket Golf</em><small>Meta</small></span><i>✺</i><span class="munit"><em>Corks Popcorn</em><small>Amazon</small></span><i>✺</i><span class="munit"><em>Andi</em><small>Marketplace</small></span><i>✺</i><span class="munit"><em>Luna</em><small>Amazon Ads</small></span><i>✺</i><span class="munit"><em>Little Gripsters</em><small>TikTok</small></span><i>✺</i><span class="munit"><em>Geo Project</em><small>Organic + paid</small></span><i>✺</i><span class="munit"><em>QB54</em><small>Meta + Amazon</small></span><i>✺</i><span class="munit"><em>Crae Home</em><small>Ads + listings</small></span><i>✺</i><span class="munit"><em>Teton Tackle</em><small>2,000+ units in 90 days</small></span><i>✺</i><span class="munit"><em>Agave Sweet</em><small>TACOS 79% to 40%</small></span><i>✺</i><span class="munit"><em>MOOD</em><small>117% in a year</small></span><i>✺</i><span class="munit"><em>Copper</em><small>TikTok Shop</small></span><i>✺</i>
+      </div>
     </div>
 
     <!-- ============ STORY ============ -->
     <section class="story" id="story">
       <div class="story__head">
-        <p class="eyebrow" data-reveal>The story so far</p>
-        <h2 class="h2" data-reveal>If this is you, <em>keep reading.</em></h2>
+        <p class="eyebrow" data-reveal>Why brands hire us</p>
+        <h2 class="h2" data-reveal>It usually starts <em>like this.</em></h2>
       </div>
 
       <div class="story__body">
@@ -123,17 +220,17 @@
           <div class="step" data-step="2">
             <span class="step__num">Chapter 02</span>
             <h3>Then came the platforms.</h3>
-            <p>Amazon has its own rules. Walmart has another set. TikTok rewards something completely different than Meta does. Each one has its own algorithm, its own ad system, its own creative demands, its own way of turning a stranger into a customer.</p>
+            <p>Amazon wants keyword-indexed listings and a clean account health score. Meta wants fresh creative every single week. TikTok wants creators, not ads. Walmart wants its own spec for all of it. Four platforms, four rulebooks, four different ways of turning a stranger into a customer.</p>
           </div>
           <div class="step" data-step="3">
             <span class="step__num">Chapter 03</span>
-            <h3>The math stopped working.</h3>
-            <p>Run one platform well and you have a part-time job. Run all of them well and you have a company you no longer have time to actually run. Somewhere in there, the work you love became the thing you never get to.</p>
+            <h3>Every channel became a job.</h3>
+            <p>Run one channel well and it eats real hours every week: bids, creative, inventory, listings, support tickets. Run four and you're either hiring a growth team or becoming one. Meanwhile the product, the thing that started all of this, sits untouched on your to-do list.</p>
           </div>
           <div class="step" data-step="4">
             <span class="step__num">Chapter 04</span>
             <h3>This is where we come in.</h3>
-            <p>One team that knows every one of those platforms inside out, takes the entire weight off your plate, and hands you back your week. You build the product. We build the demand.</p>
+            <p>One partner that already runs these platforms every day. We take over the channel work end to end, report in revenue and profit instead of impressions, and hand you back your week.</p>
             <a class="btn btn--solid" href="#services" data-magnetic>See how it works</a>
           </div>
         </div>
@@ -141,7 +238,7 @@
     </section>
 
     <!-- ============ THE TURN ============ -->
-    <section class="turn">
+    <section class="turn" id="turn">
       <div class="turn__inner">
         <p class="eyebrow eyebrow--light" data-reveal>The turn</p>
         <h2 class="turn__title" data-reveal>&ldquo;That's the moment<br>most brands <em>find us.</em>&rdquo;</h2>
@@ -154,55 +251,136 @@
       <div class="services__head">
         <p class="eyebrow" data-reveal>What we do</p>
         <h2 class="h2" data-reveal>Every lane. <em>One team.</em></h2>
-        <p class="lede" data-reveal>Most agencies pick a lane: creative or media, marketplaces or social. Then you spend your year stitching five vendors together and hoping they talk to each other. We built BYLD so you never have to.</p>
+        <p class="lede" data-reveal>Most agencies were built for one lane. The lanes they weren't built for become your problem again.</p>
       </div>
 
-      <div class="flywheel" data-reveal>
-        <div class="flywheel__ring" aria-hidden="true">
-          <svg viewBox="0 0 300 300">
-            <defs>
-              <path id="circlePath" d="M 150,150 m -110,0 a 110,110 0 1,1 220,0 a 110,110 0 1,1 -220,0"></path>
-            </defs>
-            <text textLength="688" lengthAdjust="spacing">
-              <textPath href="#circlePath">Creative ✺ Ads ✺ Listings ✺ Profit ✺ Creative ✺ Ads ✺ Listings ✺ Profit ✺</textPath>
-            </text>
-          </svg>
-          <div class="flywheel__core"><b>The BYLD<br>flywheel</b></div>
+      <div class="versus" data-reveal>
+        <div class="versus__col">
+          <h4>A creative shop</h4>
+          <p>Beautiful assets. Nobody accountable for what they sell.</p>
         </div>
-        <p class="flywheel__caption">Full-stack growth infrastructure, designed to compound. The creative makes the ads work. The ads feed the listings. The listings make the whole thing profitable.</p>
+        <div class="versus__col">
+          <h4>A media buyer</h4>
+          <p>Spend deployed. Listings and creative are someone else's problem.</p>
+        </div>
+        <div class="versus__col">
+          <h4>A marketplace vendor</h4>
+          <p>One channel deep. The rest of your funnel goes quiet.</p>
+        </div>
+        <p class="versus__byld">BYLD was built for the whole loop: <em>creative, ads, listings, operations, one P&amp;L.</em></p>
       </div>
 
-      <div class="services__grid">
-        <article class="svc" data-reveal>
-          <span class="svc__num">01</span>
+      <div class="bento">
+        <div class="tile tile--fly" data-reveal>
+          <div class="flywheel">
+            <div class="flywheel__ring" aria-hidden="true">
+              <svg viewBox="0 0 300 300">
+                <defs>
+                  <path id="circlePath" d="M 150,150 m -110,0 a 110,110 0 1,1 220,0 a 110,110 0 1,1 -220,0"></path>
+                </defs>
+                <text textLength="688" lengthAdjust="spacing">
+                  <textPath href="#circlePath">Creative ✺ Ads ✺ Listings ✺ Profit ✺ Creative ✺ Ads ✺ Listings ✺ Profit ✺</textPath>
+                </text>
+              </svg>
+              <div class="flywheel__core"><b>The BYLD<br>flywheel</b></div>
+            </div>
+            <p class="flywheel__caption">Full-stack growth infrastructure, designed to compound. Creative makes the ads work, ads feed the listings, listings turn profit. And the channels feed each other: TikTok creator videos lift your branded search on Amazon, Amazon reviews become Meta creative. One team sees the whole loop. Four vendors never will.</p>
+          </div>
+        </div>
+
+        <article class="tile" data-reveal>
+          <span class="tile__num">01</span>
           <h3>Creative &amp; content</h3>
-          <p>We shoot and design the images that stop the scroll. Photography, video, A+ design, and the storefront visuals your product deserved from day one.</p>
+          <p>We shoot and design what stops the scroll.</p>
+          <ul class="tile__list">
+            <li>Photography and video</li>
+            <li>A+ and storefront design</li>
+            <li>Ad creative testing</li>
+          </ul>
         </article>
-        <article class="svc" data-reveal>
-          <span class="svc__num">02</span>
+
+        <article class="tile" data-reveal>
+          <span class="tile__num">02</span>
           <h3>Listings &amp; SEO</h3>
-          <p>We write and optimize the listings people actually find. Keywords, copy, and conversion, tuned for each marketplace's algorithm instead of against it.</p>
+          <p>Built to rank and convert on each marketplace's algorithm.</p>
+          <ul class="tile__list">
+            <li>Keyword research</li>
+            <li>Titles, bullets, A+ copy</li>
+            <li>Conversion optimization</li>
+          </ul>
         </article>
-        <article class="svc" data-reveal>
-          <span class="svc__num">03</span>
+
+        <article class="tile tile--dark" data-reveal>
+          <span class="tile__num">03</span>
           <h3>Paid media</h3>
-          <p>Sponsored Products, Brands, and Display. Full-funnel Meta and TikTok. Every dollar of spend treated like it came out of our own pocket.</p>
+          <p>Every dollar of spend treated like it came out of our own pocket.</p>
+          <ul class="tile__list">
+            <li>Sponsored Products, Brands, Display</li>
+            <li>Full-funnel Meta</li>
+            <li>TikTok Ads and Spark Ads</li>
+          </ul>
         </article>
-        <article class="svc" data-reveal>
-          <span class="svc__num">04</span>
+
+        <article class="tile" data-reveal>
+          <span class="tile__num">04</span>
           <h3>Storefronts</h3>
-          <p>Brand stores and landing pages built to perform, not just to look pretty. Though they will also look pretty.</p>
+          <p>Convert the traffic you already paid for.</p>
+          <ul class="tile__list">
+            <li>Amazon Brand Stores</li>
+            <li>Walmart storefronts</li>
+            <li>Landing pages</li>
+          </ul>
         </article>
-        <article class="svc" data-reveal>
-          <span class="svc__num">05</span>
+
+        <article class="tile" data-reveal>
+          <span class="tile__num">05</span>
           <h3>Retail operations</h3>
-          <p>Onboarding, account setup, inventory and forecasting, reviews, brand protection. The unglamorous work that quietly decides your margins.</p>
+          <p>The unglamorous work that quietly decides your margins.</p>
+          <ul class="tile__list">
+            <li>Onboarding and account setup</li>
+            <li>Inventory and forecasting</li>
+            <li>Reviews and brand protection</li>
+          </ul>
         </article>
-        <article class="svc" data-reveal>
-          <span class="svc__num">06</span>
+
+        <article class="tile" data-reveal>
+          <span class="tile__num">06</span>
           <h3>Creator partnerships</h3>
-          <p>We connect you with the creators and influencers who make your product feel like a discovery instead of an ad.</p>
+          <p>Your product, sold in a voice people already trust.</p>
+          <ul class="tile__list">
+            <li>Creator recruiting and outreach</li>
+            <li>Affiliate programs</li>
+            <li>Paid amplification of winners</li>
+          </ul>
         </article>
+
+        <div class="tile tile--wide" data-reveal>
+          <div class="engage">
+            <p class="engage__label">How an engagement runs</p>
+            <div class="engage__grid">
+              <div class="engage__step">
+                <span class="engage__num">01</span>
+                <h4>Audit</h4>
+                <p>We tear down your listings, ads, and margins, and show you where money is leaking.</p>
+              </div>
+              <div class="engage__step">
+                <span class="engage__num">02</span>
+                <h4>Plan</h4>
+                <p>A channel-by-channel roadmap with the numbers we intend to move, in order.</p>
+              </div>
+              <div class="engage__step">
+                <span class="engage__num">03</span>
+                <h4>Launch</h4>
+                <p>Listings, creative, and campaigns go live. Ours to run day to day.</p>
+              </div>
+              <div class="engage__step">
+                <span class="engage__num">04</span>
+                <h4>Report</h4>
+                <p>Weekly reporting in revenue and profit, not impressions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -210,7 +388,7 @@
     <section class="channels" id="channels">
       <div class="channels__head">
         <p class="eyebrow" data-reveal>Where we grow you</p>
-        <h2 class="h2" data-reveal>Four channels <em>deep.</em><br>Not forty channels thin.</h2>
+        <h2 class="h2" data-reveal>Amazon, Meta, TikTok, Walmart.<br>Run <em>properly.</em></h2>
       </div>
 
       <div class="acc" data-reveal>
@@ -253,7 +431,7 @@
           </button>
           <div class="acc__panel">
             <div class="acc__panel-inner">
-              <p>Turning scrollers into buyers through listings, lives, and creator partnerships. We find the creators whose audiences already want what you make, then amplify what works with paid.</p>
+              <p>TikTok Shop listings, affiliate creator programs, lives, and Spark Ads. We find the creators whose audiences already buy products like yours, then put paid behind whatever converts.</p>
               <p class="acc__proof"><b>84%</b> of Little Gripsters' revenue came from creator content</p>
             </div>
           </div>
@@ -263,12 +441,12 @@
           <button class="acc__btn" aria-expanded="false">
             <span class="acc__num">04</span>
             <span class="acc__name">Walmart</span>
-            <span class="acc__tag">The next land grab</span>
+            <span class="acc__tag">Early advantage</span>
             <span class="acc__icon" aria-hidden="true"></span>
           </button>
           <div class="acc__panel">
             <div class="acc__panel-inner">
-              <p>Everything from setup to optimization to a storefront built to perform, on the marketplace most brands are about to be on. Getting there early is the whole advantage.</p>
+              <p>Item setup, listing optimization, Walmart Connect campaigns, and a storefront built to perform, on the marketplace most brands are about to be on. Getting there early is the whole advantage.</p>
               <p class="acc__proof"><b>Setup to storefront</b>, handled end to end</p>
             </div>
           </div>
@@ -283,7 +461,7 @@
           </button>
           <div class="acc__panel">
             <div class="acc__panel-inner">
-              <p>Google, email, and international expansion round it out when your brand is ready for them. We'll tell you honestly when that is, and when it isn't yet.</p>
+              <p>Google, email, and international expansion round it out when your brand is ready for them. We'd rather run four channels deep than forty channels thin, so we'll tell you honestly when it's time, and when it isn't yet.</p>
               <p class="acc__proof"><b>Growth that compounds</b>, not channels for their own sake</p>
             </div>
           </div>
@@ -298,50 +476,97 @@
           <p class="eyebrow" data-reveal>The receipts</p>
           <h2 class="h2" data-reveal>Results you can find<br>in a <em>P&amp;L.</em></h2>
         </div>
-        <p class="results__note" data-reveal>Not our dashboard. Their books. Every number below is a real client outcome from our case studies.</p>
+        <p class="results__note" data-reveal>Not our dashboard. Their books. Every number is a real client outcome, and every card opens the case study behind it.</p>
+      </div>
+
+      <div class="results__filters" data-reveal>
+        <button class="rfilter is-active" data-filter="all">All<span>10</span></button>
+        <button class="rfilter" data-filter="amazon">Amazon<span>5</span></button>
+        <button class="rfilter" data-filter="meta">Meta<span>3</span></button>
+        <button class="rfilter" data-filter="tiktok">TikTok<span>2</span></button>
       </div>
 
       <div class="results__strip" data-drag>
-        <article class="rcard" data-reveal>
+        <a class="rcard" data-cat="amazon" data-reveal href="https://www.byldcommerce.com/corks-popcorn" target="_blank" rel="noopener">
+          <span class="rcard__tag">Amazon</span>
           <span class="rcard__stat">13<em>x</em></span>
-          <p class="rcard__what">revenue growth</p>
-          <p class="rcard__who">Corks Popcorn · Amazon listings + campaign optimization</p>
-        </article>
-        <article class="rcard rcard--accent" data-reveal>
-          <span class="rcard__stat">$20<em>M</em></span>
-          <p class="rcard__what">scaled from $10K in revenue</p>
-          <p class="rcard__who">Bucket Golf · Full-funnel Meta</p>
-        </article>
-        <article class="rcard" data-reveal>
+          <span class="rcard__what">revenue growth</span>
+          <span class="rcard__more">2x ROAS · ACOS cut 50%</span>
+          <span class="rcard__who"><b>Corks Popcorn</b>Amazon listings + campaigns</span>
+          <span class="rcard__go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="rcard rcard--accent" data-cat="amazon" data-reveal href="https://www.byldcommerce.com/andi" target="_blank" rel="noopener">
+          <span class="rcard__tag">Amazon</span>
           <span class="rcard__stat">584<em>%</em></span>
-          <p class="rcard__what">revenue growth in 12 months</p>
-          <p class="rcard__who">Andi · Marketplace + strategic ad spend</p>
-        </article>
-        <article class="rcard" data-reveal>
+          <span class="rcard__what">revenue growth in 12 months</span>
+          <span class="rcard__more">Marketplace optimization + ad spend</span>
+          <span class="rcard__who"><b>Andi</b>Amazon brand launch</span>
+          <span class="rcard__go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="rcard" data-cat="amazon" data-reveal href="https://www.byldcommerce.com/luna" target="_blank" rel="noopener">
+          <span class="rcard__tag">Amazon</span>
           <span class="rcard__stat">$100<em>K+</em></span>
-          <p class="rcard__what">monthly revenue within 3 months</p>
-          <p class="rcard__who">Luna · Targeted Amazon Ads launch</p>
-        </article>
-        <article class="rcard rcard--accent" data-reveal>
-          <span class="rcard__stat">84<em>%</em></span>
-          <p class="rcard__what">of revenue from creator content</p>
-          <p class="rcard__who">Little Gripsters · Creator-first TikTok launch</p>
-        </article>
-        <article class="rcard" data-reveal>
-          <span class="rcard__stat">9.16<em>x</em></span>
-          <p class="rcard__what">ROAS, $55K on $6K of spend</p>
-          <p class="rcard__who">Geo Project · Organic content, amplified</p>
-        </article>
-        <article class="rcard" data-reveal>
-          <span class="rcard__stat">$250<em>K</em></span>
-          <p class="rcard__what">profit in 45 days</p>
-          <p class="rcard__who">QB54 · Meta + Amazon full funnel</p>
-        </article>
-        <article class="rcard rcard--accent" data-reveal>
+          <span class="rcard__what">monthly revenue within 3 months</span>
+          <span class="rcard__more">9x overall growth</span>
+          <span class="rcard__who"><b>Luna</b>Targeted Amazon Ads</span>
+          <span class="rcard__go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="rcard" data-cat="amazon" data-reveal href="https://www.byldcommerce.com/crae-home" target="_blank" rel="noopener">
+          <span class="rcard__tag">Amazon</span>
           <span class="rcard__stat">Loss <em>to</em> profit</span>
-          <p class="rcard__what">a $450 monthly loss became $4,500 in monthly profit</p>
-          <p class="rcard__who">Crae Home · Ads, pricing, listings</p>
-        </article>
+          <span class="rcard__what">$450 monthly loss became $4,500 in profit</span>
+          <span class="rcard__more">$20K+ monthly revenue</span>
+          <span class="rcard__who"><b>Crae Home</b>Ads, pricing, listings</span>
+          <span class="rcard__go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="rcard" data-cat="amazon" data-reveal href="https://www.byldcommerce.com/tetontackle" target="_blank" rel="noopener">
+          <span class="rcard__tag">Amazon</span>
+          <span class="rcard__stat">2,000<em>+</em></span>
+          <span class="rcard__what">units sold in 90 days</span>
+          <span class="rcard__more">45% revenue increase</span>
+          <span class="rcard__who"><b>Teton Tackle</b>FBA migration + listing overhaul</span>
+          <span class="rcard__go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="rcard rcard--accent" data-cat="meta" data-reveal href="https://www.byldcommerce.com/bucket-golf" target="_blank" rel="noopener">
+          <span class="rcard__tag">Meta</span>
+          <span class="rcard__stat">$20<em>M</em></span>
+          <span class="rcard__what">scaled from $10K in revenue</span>
+          <span class="rcard__more">Full-funnel Meta system</span>
+          <span class="rcard__who"><b>Bucket Golf</b>Meta advertising</span>
+          <span class="rcard__go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="rcard" data-cat="meta" data-reveal href="https://www.byldcommerce.com/qb54" target="_blank" rel="noopener">
+          <span class="rcard__tag">Meta</span>
+          <span class="rcard__stat">$250<em>K</em></span>
+          <span class="rcard__what">profit in 45 days</span>
+          <span class="rcard__more">Meta + Amazon full funnel</span>
+          <span class="rcard__who"><b>QB54</b>Meta advertising</span>
+          <span class="rcard__go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="rcard" data-cat="meta" data-reveal href="https://www.byldcommerce.com/geo-project" target="_blank" rel="noopener">
+          <span class="rcard__tag">Meta</span>
+          <span class="rcard__stat">9.16<em>x</em></span>
+          <span class="rcard__what">ROAS, $55K on $6K of spend</span>
+          <span class="rcard__more">Organic content, amplified</span>
+          <span class="rcard__who"><b>Geo Project</b>Meta advertising</span>
+          <span class="rcard__go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="rcard rcard--accent" data-cat="tiktok" data-reveal href="https://www.byldcommerce.com/casestudies" target="_blank" rel="noopener">
+          <span class="rcard__tag">TikTok</span>
+          <span class="rcard__stat">84<em>%</em></span>
+          <span class="rcard__what">of revenue from creator content</span>
+          <span class="rcard__more">~1M impressions · 74% lower cost per order</span>
+          <span class="rcard__who"><b>Little Gripsters</b>Creator-first TikTok launch</span>
+          <span class="rcard__go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="rcard" data-cat="tiktok" data-reveal href="https://www.byldcommerce.com/copper" target="_blank" rel="noopener">
+          <span class="rcard__tag">TikTok</span>
+          <span class="rcard__stat">$8,500</span>
+          <span class="rcard__what">in the first 30 days on TikTok Shop</span>
+          <span class="rcard__more">4.0+ ROAS</span>
+          <span class="rcard__who"><b>Copper</b>TikTok Shop launch</span>
+          <span class="rcard__go" aria-hidden="true">&rarr;</span>
+        </a>
       </div>
       <p class="results__hint" aria-hidden="true">Drag sideways, there's more ✺</p>
     </section>
@@ -350,7 +575,7 @@
     <section class="principles" id="how-we-work">
       <div class="principles__head">
         <p class="eyebrow" data-reveal>How we work</p>
-        <h2 class="h2" data-reveal>We'd rather be useful<br>than <em>comfortable.</em></h2>
+        <h2 class="h2" data-reveal>What it's like<br>to <em>work with us.</em></h2>
       </div>
       <div class="principles__grid">
         <article class="prin" data-reveal>
@@ -371,13 +596,95 @@
       </div>
     </section>
 
+    <!-- ============ FAQ ============ -->
+    <section class="faq" id="faq">
+      <div class="faq__head">
+        <p class="eyebrow" data-reveal>Straight answers</p>
+        <h2 class="h2" data-reveal>Things founders ask us<br><em>before they call.</em></h2>
+      </div>
+      <div class="acc acc--faq" data-reveal>
+        <div class="acc__item">
+          <button class="acc__btn" aria-expanded="false">
+            <span class="acc__num">01</span>
+            <span class="acc__name">What does it cost?</span>
+            <span class="acc__icon" aria-hidden="true"></span>
+          </button>
+          <div class="acc__panel">
+            <div class="acc__panel-inner">
+              <p>It depends on channels and scope, so we won't pretend there's one number. What we can promise: you'll always know exactly what you're paying for, and engagements are structured so we do well when your numbers do. If the math doesn't work for your margins, we'll say so on the first call.</p>
+            </div>
+          </div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" aria-expanded="false">
+            <span class="acc__num">02</span>
+            <span class="acc__name">Do you replace my in-house team?</span>
+            <span class="acc__icon" aria-hidden="true"></span>
+          </button>
+          <div class="acc__panel">
+            <div class="acc__panel-inner">
+              <p>No. We take over the channel work: listings, ads, creative, creator programs, and the operations behind them. You keep the product, the brand, and the decisions. Plenty of our clients have nobody in-house for marketing at all, and that works too.</p>
+            </div>
+          </div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" aria-expanded="false">
+            <span class="acc__num">03</span>
+            <span class="acc__name">How fast will we see results?</span>
+            <span class="acc__icon" aria-hidden="true"></span>
+          </button>
+          <div class="acc__panel">
+            <div class="acc__panel-inner">
+              <p>Honestly, it depends where you're starting. Wasted ad spend and broken listings can be fixed in weeks. Rankings, reviews, and creator programs compound over months. We'll tell you which bucket your account is in after the audit, not before.</p>
+            </div>
+          </div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" aria-expanded="false">
+            <span class="acc__num">04</span>
+            <span class="acc__name">Which channel should we start on?</span>
+            <span class="acc__icon" aria-hidden="true"></span>
+          </button>
+          <div class="acc__panel">
+            <div class="acc__panel-inner">
+              <p>Usually the one already making you money, run properly, before anything new gets added. For most brands that's Amazon. TikTok Shop and Walmart come when your numbers say you're ready, and we'll tell you honestly when that is.</p>
+            </div>
+          </div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" aria-expanded="false">
+            <span class="acc__num">05</span>
+            <span class="acc__name">Who are you not a fit for?</span>
+            <span class="acc__icon" aria-hidden="true"></span>
+          </button>
+          <div class="acc__panel">
+            <div class="acc__panel-inner">
+              <p>Brands that want a vendor to blame instead of a partner to work with, and brands that need a miracle by Friday. If our audit says we can't move your numbers, we'll tell you that instead of taking the retainer.</p>
+            </div>
+          </div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" aria-expanded="false">
+            <span class="acc__num">06</span>
+            <span class="acc__name">Are these numbers real?</span>
+            <span class="acc__icon" aria-hidden="true"></span>
+          </button>
+          <div class="acc__panel">
+            <div class="acc__panel-inner">
+              <p>Yes. Every number on this page is a real client outcome from our case studies, which you can read in full at <a href="https://www.byldcommerce.com/casestudies" target="_blank" rel="noopener">byldcommerce.com/casestudies</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ CONTACT ============ -->
     <section class="contact" id="contact">
       <div class="contact__inner">
         <div class="contact__copy">
           <p class="eyebrow eyebrow--light" data-reveal>Say hello</p>
-          <h2 class="contact__title" data-reveal>You've got something<br><em>worth scaling.</em></h2>
-          <p class="contact__sub" data-reveal>We're not the biggest agency, and we don't try to be. We're the team you bring in when you want people who'll treat your brand like it matters.</p>
+          <h2 class="contact__title" data-reveal>Ready to get<br>your <em>week back?</em></h2>
+          <p class="contact__sub" data-reveal>Tell us where you're stuck: a channel, a number, or all of it. You'll get a straight answer about whether we can move it and what we'd do first. No pitch deck, no pressure.</p>
           <div class="contact__meta" data-reveal>
             <a href="mailto:support@byldcommerce.com">support@byldcommerce.com</a>
             <a href="sms:3852457178">Text us · 385.245.7178</a>
@@ -394,6 +701,16 @@
             <input type="text" name="brand" placeholder="Something worth scaling" required>
           </label>
           <label>
+            <span>Monthly revenue, ballpark</span>
+            <select name="revenue">
+              <option>Under $20K / month</option>
+              <option>$20K to $100K / month</option>
+              <option>$100K to $500K / month</option>
+              <option>$500K+ / month</option>
+              <option selected>Rather say on the call</option>
+            </select>
+          </label>
+          <label>
             <span>What's eating your week?</span>
             <select name="pain">
               <option>Amazon</option>
@@ -403,7 +720,7 @@
               <option selected>Honestly, all of it</option>
             </select>
           </label>
-          <button class="btn btn--solid btn--lg btn--full" type="submit" data-magnetic>Start the conversation</button>
+          <button class="btn btn--solid btn--lg btn--full" type="submit" data-magnetic>Get a straight answer</button>
           <p class="contact__alt">Or skip the form and <a href="https://www.byldcommerce.com/schedule" target="_blank" rel="noopener">book a free consultation</a>.</p>
         </form>
       </div>

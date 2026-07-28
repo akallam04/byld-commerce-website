@@ -1,22 +1,24 @@
 (() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* capture mode for automated screenshots: reveal everything instantly.
-     ?capture=<id> shifts the page to that section with a paint transform,
-     because headless Chrome screenshots blank out on fragments and scrolls */
+  /* capture mode for the README screenshots: ?capture=<section id> reveals
+     everything instantly and shifts the page with a paint transform,
+     because headless Chrome blanks out on fragments and scroll positions */
   const captureId = new URLSearchParams(location.search).get('capture');
   if (captureId !== null) {
     document.documentElement.classList.add('is-capture');
-    const captureTarget = document.getElementById(captureId);
-    if (captureTarget) {
-      document.body.style.transform = `translateY(-${captureTarget.offsetTop}px)`;
-    }
+    requestAnimationFrame(() => {
+      const px = captureId.startsWith('px:')
+        ? parseInt(captureId.slice(3), 10)
+        : (document.getElementById(captureId) || {}).offsetTop;
+      if (px) document.body.style.transform = `translateY(-${px}px)`;
+    });
   }
 
   /* Hosts like Squarespace wrap code blocks in positioned containers that
      can trap or clip fixed overlays. Re-parent them to <body> so they
      always live in the root stacking context. No-op on the plain site. */
-  ['.grain', '.header', '.byld-header', '.menu', '.preloader'].forEach((sel) => {
+  ['.grain', '.header', '.byld-header', '.menu', '.preloader', '.rail'].forEach((sel) => {
     const el = document.querySelector(sel);
     if (el && el.parentElement !== document.body) document.body.appendChild(el);
   });
@@ -132,24 +134,47 @@
     steps.forEach((s) => stepIO.observe(s));
   }
 
-  /* ---------- channels accordion ---------- */
+  /* ---------- accordions (channels + faq) ---------- */
 
-  const accItems = document.querySelectorAll('.acc__item');
-
-  accItems.forEach((item) => {
-    const btn = item.querySelector('.acc__btn');
-    btn.addEventListener('click', () => {
-      const isOpen = item.classList.contains('is-open');
-      accItems.forEach((other) => {
-        other.classList.remove('is-open');
-        other.querySelector('.acc__btn').setAttribute('aria-expanded', 'false');
+  /* scoped per .acc container so opening a FAQ item doesn't close the
+     channels accordion (and vice versa) */
+  document.querySelectorAll('.acc').forEach((acc) => {
+    const accItems = acc.querySelectorAll('.acc__item');
+    accItems.forEach((item) => {
+      const btn = item.querySelector('.acc__btn');
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+        accItems.forEach((other) => {
+          other.classList.remove('is-open');
+          other.querySelector('.acc__btn').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
       });
-      if (!isOpen) {
-        item.classList.add('is-open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
     });
   });
+
+  /* ---------- results filters ---------- */
+
+  /* categories mirror how the case studies index is grouped on the site */
+  const filters = document.querySelectorAll('.rfilter');
+  const rcards = document.querySelectorAll('.rcard');
+
+  if (filters.length && rcards.length) {
+    const strip = document.querySelector('.results__strip');
+    filters.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.filter;
+        filters.forEach((b) => b.classList.toggle('is-active', b === btn));
+        rcards.forEach((card) => {
+          card.classList.toggle('is-hidden', cat !== 'all' && card.dataset.cat !== cat);
+        });
+        if (strip) strip.scrollTo({ left: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+    });
+  }
 
   /* ---------- drag to scroll (results strip) ---------- */
 
@@ -178,8 +203,12 @@
       strip.classList.remove('is-dragging');
     });
 
+    /* cards are links now: swallow the click if the pointer actually dragged */
     strip.addEventListener('click', (e) => {
-      if (Math.abs(strip.scrollLeft - startScroll) > 6) e.preventDefault();
+      if (Math.abs(strip.scrollLeft - startScroll) > 6) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
     }, true);
   }
 
@@ -214,6 +243,185 @@
     });
   });
 
+  /* ---------- chapter rail ---------- */
+
+  const rail = document.querySelector('.rail');
+
+  if (rail) {
+    const links = rail.querySelectorAll('a[data-rail]');
+    const sections = [...links]
+      .map((a) => document.getElementById(a.dataset.rail))
+      .filter(Boolean);
+
+    if (sections.length) {
+      const railIO = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            links.forEach((a) => a.classList.toggle('is-active', a.dataset.rail === entry.target.id));
+          }
+        });
+      }, { rootMargin: '-40% 0px -50% 0px' });
+      sections.forEach((sec) => railIO.observe(sec));
+    }
+
+    /* progress line: how far down the page we are */
+    const bar = rail.querySelector('.rail__line i');
+    if (bar) {
+      const onScroll = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.transform = `scaleY(${max > 0 ? Math.min(window.scrollY / max, 1) : 0})`;
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+  }
+
+  /* ---------- hero live system ---------- */
+
+  /* Runs the pitch as a loop: an alert fires on a platform, the packet
+     travels down the wire, the core absorbs it, the chip flips to handled.
+     Once all four are clear the whole thing resets and starts over. */
+
+  const sysRoot = document.querySelector('.hero__system');
+
+  if (sysRoot) {
+    const order = ['amz', 'meta', 'tik', 'wal'];
+    const core = sysRoot.querySelector('[data-core]');
+    const stateLabel = sysRoot.querySelector('[data-core-label]');
+    const cap = sysRoot.querySelector('.hero__system-cap');
+    const capText = sysRoot.querySelector('[data-core-cap]');
+    const nodeFor = (k) => sysRoot.querySelector(`[data-node="${k}"]`);
+    const wireFor = (k) => sysRoot.querySelector(`[data-wire="${k}"]`);
+
+    if (reduceMotion) {
+      /* no loop: show the resolved end state, which is the point anyway */
+      order.forEach((k) => {
+        nodeFor(k).classList.add('is-handled');
+        wireFor(k).classList.add('is-clear');
+      });
+      if (capText) capText.textContent = 'Four platforms. Queue clear.';
+      if (cap) cap.classList.add('is-clear');
+    } else {
+      let timers = [];
+      const wait = (fn, ms) => timers.push(setTimeout(fn, ms));
+
+      const clearAll = () => {
+        timers.forEach(clearTimeout);
+        timers = [];
+      };
+
+      const resetBoard = () => {
+        order.forEach((k) => {
+          nodeFor(k).classList.remove('is-firing', 'is-handled');
+          const w = wireFor(k);
+          w.classList.remove('is-sending', 'is-clear');
+        });
+        if (stateLabel) stateLabel.textContent = 'ON IT';
+        if (capText) capText.textContent = 'Four platforms. One team clearing the queue.';
+        if (cap) cap.classList.remove('is-clear');
+      };
+
+      const runOne = (k, done) => {
+        const node = nodeFor(k);
+        const wire = wireFor(k);
+        node.classList.add('is-firing');
+
+        wait(() => {
+          /* restart the dash animation reliably */
+          wire.classList.remove('is-sending');
+          void wire.offsetWidth;
+          wire.classList.add('is-sending');
+        }, 380);
+
+        /* packet lands in the core */
+        wait(() => {
+          core.classList.remove('is-hit');
+          void core.offsetWidth;
+          core.classList.add('is-hit');
+          node.classList.remove('is-firing');
+          node.classList.add('is-handled');
+          wire.classList.add('is-clear');
+          wire.classList.remove('is-sending');
+          done();
+        }, 1330);
+      };
+
+      const runCycle = () => {
+        resetBoard();
+        let i = 0;
+        const next = () => {
+          if (i >= order.length) {
+            if (stateLabel) stateLabel.textContent = 'CLEAR';
+            if (capText) capText.textContent = 'Four platforms. Queue clear.';
+            if (cap) cap.classList.add('is-clear');
+            wait(runCycle, 3200);
+            return;
+          }
+          const k = order[i++];
+          runOne(k, () => wait(next, 420));
+        };
+        wait(next, 700);
+      };
+
+      /* only run while the hero is on screen, and start after the wires draw */
+      let running = false;
+      const heroIO = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !running) {
+            running = true;
+            wait(runCycle, 900);
+          } else if (!entry.isIntersecting && running) {
+            running = false;
+            clearAll();
+          }
+        });
+      }, { threshold: 0.15 });
+
+      heroIO.observe(sysRoot);
+    }
+  }
+
+  /* ---------- count-up stats ---------- */
+
+  /* animates only the leading number; prefixes ($) and suffixes (x, %, K...)
+     stay as-is. Stats with no leading number are left alone. */
+  const counters = document.querySelectorAll('.hero__proof-item b, .rcard__stat');
+
+  if (counters.length && !reduceMotion) {
+    const ease = (t) => 1 - Math.pow(1 - t, 3);
+    const runCount = (node) => {
+      const text = node.firstChild;
+      if (!text || text.nodeType !== 3) return;
+      const m = text.nodeValue.match(/^(\$?)([\d,]+(?:\.\d+)?)/);
+      if (!m) return;
+      const prefix = m[1];
+      const target = parseFloat(m[2].replace(/,/g, ''));
+      const decimals = (m[2].split('.')[1] || '').length;
+      const rest = text.nodeValue.slice(m[0].length);
+      const grouped = m[2].includes(',');
+      const t0 = performance.now();
+      const tick = (now) => {
+        const k = ease(Math.min((now - t0) / 1100, 1));
+        let v = (target * k).toFixed(decimals);
+        if (grouped) v = Number(v).toLocaleString('en-US', { minimumFractionDigits: decimals });
+        text.nodeValue = prefix + v + rest;
+        if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const countIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          runCount(entry.target);
+          countIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    counters.forEach((el) => countIO.observe(el));
+  }
+
   /* ---------- contact form -> email ---------- */
 
   const form = document.querySelector('.contact__form');
@@ -225,9 +433,10 @@
       const name = data.get('name') || '';
       const brand = data.get('brand') || '';
       const pain = data.get('pain') || '';
+      const revenue = data.get('revenue') || '';
       const subject = encodeURIComponent(`Growth inquiry from ${brand}`);
       const body = encodeURIComponent(
-        `Hi BYLD team,\n\nI'm ${name} from ${brand}. The thing eating my week right now: ${pain}.\n\nI'd love to talk about how you can help us grow.\n`
+        `Hi BYLD team,\n\nI'm ${name} from ${brand}. The thing eating my week right now: ${pain}. Monthly revenue, ballpark: ${revenue}.\n\nI'd love to talk about how you can help us grow.\n`
       );
       window.location.href = `mailto:support@byldcommerce.com?subject=${subject}&body=${body}`;
     });

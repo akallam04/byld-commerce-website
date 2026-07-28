@@ -2,6 +2,20 @@
 <div id="top"></div>
 <div class="grain" aria-hidden="true"></div>
 
+
+  <!-- chapter rail: fixed page index, desktop only -->
+  <nav class="rail" aria-label="Page index">
+    <span class="rail__line" aria-hidden="true"><i></i></span>
+    <a href="#story" data-rail="story"><b>01</b><span>The story</span></a>
+    <a href="#turn" data-rail="turn"><b>02</b><span>The turn</span></a>
+    <a href="#services" data-rail="services"><b>03</b><span>What we do</span></a>
+    <a href="#channels" data-rail="channels"><b>04</b><span>Channels</span></a>
+    <a href="#results" data-rail="results"><b>05</b><span>Results</span></a>
+    <a href="#how-we-work" data-rail="how-we-work"><b>06</b><span>How we work</span></a>
+    <a href="#faq" data-rail="faq"><b>07</b><span>FAQ</span></a>
+    <a href="#contact" data-rail="contact"><b>08</b><span>Contact</span></a>
+  </nav>
+
   <div class="preloader" aria-hidden="true">
     <div class="preloader__word">
       <span>B</span><span>Y</span><span>L</span><span>D</span><span class="preloader__reg">®</span>
@@ -44,27 +58,106 @@
 <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="hero__inner">
-        <p class="eyebrow" data-reveal>Ecommerce growth, end to end · Provo, Utah</p>
-        <h1 class="hero__title">
-          <span class="line"><span data-reveal-line>You made something</span></span>
-          <span class="line"><span data-reveal-line><em>people love.</em></span></span>
-          <span class="line"><span data-reveal-line>Selling it became</span></span>
-          <span class="line"><span data-reveal-line>the <em>second job.</em></span></span>
-        </h1>
-        <div class="hero__foot" data-reveal>
-          <p class="hero__sub">Amazon wants one thing. TikTok wants another. Meta wants five new creatives by Friday. BYLD is the team that runs all of it for you, so you can get back to the part only you can do.</p>
-          <div class="hero__ctas">
-            <a class="btn btn--solid btn--lg" href="#contact" data-magnetic>Book a free consultation</a>
-            <a class="btn btn--ghost btn--lg" href="#story" data-magnetic>Sound familiar?</a>
+        <div class="hero__copy">
+          <p class="eyebrow" data-reveal>Full-service ecommerce growth · Provo, Utah</p>
+          <h1 class="hero__title">
+            <span class="line"><span data-reveal-line>You build</span></span>
+            <span class="line"><span data-reveal-line><em>the product.</em></span></span>
+            <span class="line"><span data-reveal-line>We build</span></span>
+            <span class="line"><span data-reveal-line><em>the demand.</em></span></span>
+          </h1>
+          <div class="hero__foot" data-reveal>
+            <p class="hero__sub">BYLD runs your Amazon, Walmart, TikTok, and Meta as one team: listings, ads, creative, and the operations behind them. We've taken a brand from $10K to $20M on Meta and grown another 13x on Amazon. You get the growth without the second job.</p>
+            <div class="hero__ctas">
+              <a class="btn btn--solid btn--lg" href="#contact" data-magnetic>Get a free consultation</a>
+              <a class="btn btn--ghost btn--lg" href="#results" data-magnetic>See the numbers</a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="hero__chips" aria-hidden="true">
-        <div class="chip chip--1"><i></i>Amazon · Listing suppressed, again</div>
-        <div class="chip chip--2"><i></i>Meta · Creative fatigue detected</div>
-        <div class="chip chip--3"><i></i>TikTok · The algorithm changed. Again.</div>
-        <div class="chip chip--4"><i></i>Walmart · 14 new requirements</div>
+        <!-- live system: alerts fire, travel down the wires, BYLD clears them -->
+        <div class="hero__system" data-reveal>
+          <svg class="sys" viewBox="0 0 440 460" role="img" aria-label="Platform alerts routing into BYLD and being cleared">
+        <g class="sys__wire" data-wire="amz">
+          <path class="sys__wire-base" d="M 196 45 C 226 74, 236 108, 244 150" pathLength="100"></path>
+          <path class="sys__wire-pulse" d="M 196 45 C 226 74, 236 108, 244 150" pathLength="100"></path>
+        </g>
+        <g class="sys__wire" data-wire="meta">
+          <path class="sys__wire-base" d="M 300 140 C 292 160, 282 178, 268 198" pathLength="100"></path>
+          <path class="sys__wire-pulse" d="M 300 140 C 292 160, 282 178, 268 198" pathLength="100"></path>
+        </g>
+        <g class="sys__wire" data-wire="tik">
+          <path class="sys__wire-base" d="M 192 327 C 214 306, 224 288, 238 264" pathLength="100"></path>
+          <path class="sys__wire-pulse" d="M 192 327 C 214 306, 224 288, 238 264" pathLength="100"></path>
+        </g>
+        <g class="sys__wire" data-wire="wal">
+          <path class="sys__wire-base" d="M 302 384 C 294 350, 284 320, 272 276" pathLength="100"></path>
+          <path class="sys__wire-pulse" d="M 302 384 C 294 350, 284 320, 272 276" pathLength="100"></path>
+        </g>
+
+            <g class="sys__core" data-core>
+              <circle class="sys__ring sys__ring--1" cx="250" cy="232" r="58"></circle>
+              <circle class="sys__ring sys__ring--2" cx="250" cy="232" r="58"></circle>
+              <circle class="sys__spin" cx="250" cy="232" r="70"></circle>
+              <circle class="sys__disc" cx="250" cy="232" r="56"></circle>
+              <text class="sys__mark" x="250" y="228">BYLD</text>
+              <text class="sys__state" x="250" y="250" data-core-label>ON IT</text>
+            </g>
+
+        <g class="sys__node" data-node="amz" style="--d:0.0s">
+          <g class="sys__float">
+            <rect class="sys__chip" x="6" y="18" width="196" height="54" rx="14"></rect>
+            <circle class="sys__dot" cx="30" cy="45" r="5"></circle>
+            <path class="sys__tick" d="M 24 45 l 4.5 5 l 8 -9.5"></path>
+            <text class="sys__plat" x="48" y="41">Amazon</text>
+            <text class="sys__issue" x="48" y="59">Listing suppressed</text>
+          </g>
+        </g>
+        <g class="sys__node" data-node="meta" style="--d:0.9s">
+          <g class="sys__float">
+            <rect class="sys__chip" x="250" y="86" width="196" height="54" rx="14"></rect>
+            <circle class="sys__dot" cx="274" cy="113" r="5"></circle>
+            <path class="sys__tick" d="M 268 113 l 4.5 5 l 8 -9.5"></path>
+            <text class="sys__plat" x="292" y="109">Meta</text>
+            <text class="sys__issue" x="292" y="127">Creative fatigue</text>
+          </g>
+        </g>
+        <g class="sys__node" data-node="tik" style="--d:1.8s">
+          <g class="sys__float">
+            <rect class="sys__chip" x="2" y="300" width="196" height="54" rx="14"></rect>
+            <circle class="sys__dot" cx="26" cy="327" r="5"></circle>
+            <path class="sys__tick" d="M 20 327 l 4.5 5 l 8 -9.5"></path>
+            <text class="sys__plat" x="44" y="323">TikTok</text>
+            <text class="sys__issue" x="44" y="341">Algorithm changed</text>
+          </g>
+        </g>
+        <g class="sys__node" data-node="wal" style="--d:2.7s">
+          <g class="sys__float">
+            <rect class="sys__chip" x="238" y="384" width="196" height="54" rx="14"></rect>
+            <circle class="sys__dot" cx="262" cy="411" r="5"></circle>
+            <path class="sys__tick" d="M 256 411 l 4.5 5 l 8 -9.5"></path>
+            <text class="sys__plat" x="280" y="407">Walmart</text>
+            <text class="sys__issue" x="280" y="425">14 new requirements</text>
+          </g>
+        </g>
+          </svg>
+          <p class="hero__system-cap"><span data-core-cap>Four platforms. One team clearing the queue.</span></p>
+        </div>
+
+        <div class="hero__proof" data-reveal>
+          <a class="hero__proof-item" href="https://www.byldcommerce.com/corks-popcorn" target="_blank" rel="noopener">
+            <b>13x</b><small>revenue growth<br>Corks Popcorn</small><span class="hero__proof-link">Case study <i>&rarr;</i></span>
+          </a>
+          <a class="hero__proof-item" href="https://www.byldcommerce.com/bucket-golf" target="_blank" rel="noopener">
+            <b>$10K&nbsp;to&nbsp;$20M</b><small>on full-funnel Meta<br>Bucket Golf</small><span class="hero__proof-link">Case study <i>&rarr;</i></span>
+          </a>
+          <a class="hero__proof-item" href="https://www.byldcommerce.com/andi" target="_blank" rel="noopener">
+            <b>584%</b><small>growth in 12 months<br>Andi</small><span class="hero__proof-link">Case study <i>&rarr;</i></span>
+          </a>
+          <a class="hero__proof-item" href="https://www.byldcommerce.com/qb54" target="_blank" rel="noopener">
+            <b>$250K</b><small>profit in 45 days<br>QB54</small><span class="hero__proof-link">Case study <i>&rarr;</i></span>
+          </a>
+        </div>
       </div>
 
       <div class="hero__scroll" aria-hidden="true"><span></span></div>
