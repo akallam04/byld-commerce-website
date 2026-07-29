@@ -604,27 +604,31 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin-top: clamp(24px, 3vw, 40px);
 }
 
-/* top-aligned rather than centred: centring in a tall sticky box parked the
-   stage far below the first chapter on arrival, leaving a dead screen */
+/* centred in the space under the fixed header so that once it pins, the
+   stage sits level with whichever chapter is active, including the last */
 .story__visual {
   position: sticky;
   top: 74px;
   height: calc(100vh - 74px);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
 /* short laptop screens: shrink the stage so it clears the fold on arrival,
    before sticky takes over */
-@media (max-height: 820px) {
-  .stage { width: min(360px, 100%); }
-}
-
 .stage {
   position: relative;
   width: min(460px, 100%);
   aspect-ratio: 1;
   margin: 0 auto;
+}
+
+/* short laptop screens: shrink the stage and tighten the lead-in so the
+   whole thing clears the fold on arrival, before sticky takes over.
+   Must follow .stage to win on equal specificity */
+@media (max-height: 820px) {
+  .stage { width: min(340px, 100%); }
+  .story__body { margin-top: 16px; }
 }
 
 .stage__product {
@@ -753,11 +757,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* the leading pad used to park chapter 01 well below the stage, leaving a
    dead screen on arrival; it now lands level with the stage */
+/* the trailing pad keeps the stage pinned until the last chapter has been
+   read; too little and the stage releases while chapter four is still on
+   screen, dropping the text below it */
 .story__steps {
   display: flex;
   flex-direction: column;
   gap: 38vh;
-  padding: 12vh 0 30vh;
+  padding: 30vh 0 46vh;
 }
 
 .step { max-width: 460px; }
