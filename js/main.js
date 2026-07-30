@@ -8,7 +8,9 @@
   const captureId = captureParams.get('capture');
   if (captureId !== null) {
     document.documentElement.classList.add('is-capture');
-    requestAnimationFrame(() => {
+    /* wait for the webfonts: measuring offsets before they land shifts the
+       layout afterwards and the crop drifts off the section */
+    const place = () => {
       const px = captureId.startsWith('px:')
         ? parseInt(captureId.slice(3), 10)
         : (document.getElementById(captureId) || {}).offsetTop;
@@ -17,7 +19,9 @@
       const stageState = captureParams.get('state');
       const visual = document.querySelector('.story__visual');
       if (stageState && visual) visual.dataset.state = stageState;
-    });
+    };
+    const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
+    fonts.then(() => requestAnimationFrame(place));
   }
 
   /* Hosts like Squarespace wrap code blocks in positioned containers that

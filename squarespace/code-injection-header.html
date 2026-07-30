@@ -39,8 +39,8 @@
     --section: clamp(64px, 9vw, 104px);
     /* never below the 74px fixed header, or a section's eyebrow lands
        behind it when you jump straight to that section */
-    --section-top: 88px;
-    --rcard-stat: clamp(2.9rem, 4vw, 3.6rem);
+    --section-top: 82px;
+    --rcard-stat: clamp(2.5rem, min(4vw, 6.4vh), 3.6rem);
   }
 }
 
@@ -175,13 +175,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .eyebrow--light { color: var(--cream-soft); }
 
+/* the vh term matters on laptops: Chrome with a bookmarks bar leaves far
+   less height than the screen size suggests, and two lines of display
+   serif at full size push a section past the fold */
 .h2 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(2.6rem, 5.6vw, 4.8rem);
+  font-size: clamp(2.1rem, min(5.6vw, 8vh), 4.8rem);
   line-height: 1.02;
   letter-spacing: -0.01em;
-  margin-top: 22px;
+  margin-top: clamp(12px, 2.2vh, 22px);
 }
 
 .h2 em, .turn__title em, .contact__title em, .footer__tagline em {
@@ -374,7 +377,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   min-height: 100svh;
   display: flex;
   align-items: center;
-  padding: clamp(84px, 12vh, 110px) var(--gutter) clamp(44px, 7vh, 70px);
+  padding: clamp(60px, 9vh, 110px) var(--gutter) clamp(36px, 6vh, 70px);
   overflow: hidden;
 }
 
@@ -399,7 +402,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin-top: clamp(14px, 2vh, 24px);
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(2.4rem, min(6.9vw, 11.2vh), 6.4rem);
+  font-size: clamp(2.4rem, min(6.9vw, 8.8vh), 6.4rem);
   line-height: 0.99;
   letter-spacing: -0.015em;
 }
@@ -1077,7 +1080,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   justify-content: space-between;
   gap: 40px;
   padding: 0 var(--gutter);
-  margin-bottom: clamp(22px, 3vh, 44px);
+  margin-bottom: clamp(14px, 3vh, 44px);
   flex-wrap: wrap;
 }
 
@@ -1091,7 +1094,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   display: flex;
   gap: 18px;
   overflow-x: auto;
-  padding: 6px var(--gutter) 22px;
+  padding: 6px var(--gutter) clamp(12px, 2.2vh, 22px);
   scroll-snap-type: x proximity;
   scrollbar-width: none;
   cursor: grab;
@@ -1180,7 +1183,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: clamp(16px, 2.5vh, 30px);
 }
 
 .rfilter {
@@ -1247,7 +1250,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .rcard__who {
   display: block;
   margin-top: auto;
-  padding-top: 30px;
+  padding-top: clamp(14px, 3vh, 30px);
   font-family: var(--label);
   font-size: 12.5px;
   letter-spacing: 0.06em;

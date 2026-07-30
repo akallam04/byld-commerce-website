@@ -43,15 +43,9 @@ Two decisions drive everything else.
 | FAQ | Six questions in that same voice, including who BYLD is not a fit for |
 | Contact | Qualifying revenue dropdown, mirroring the hero's language |
 
-![The four-chapter scroll story](docs/screenshots/story.png)
+![Results - filterable cards, every one linking to the case study behind it](docs/screenshots/results.png)
 
-![The bento capability wall built around the flywheel](docs/screenshots/bento.png)
-
-![Filterable results cards, each linking to a case study](docs/screenshots/results.png)
-
-![The FAQ in the agency's direct voice](docs/screenshots/faq.png)
-
-![The closing contact section](docs/screenshots/contact.png)
+The scroll story, the flywheel and the hero's alert system only read properly in motion, so they are best seen on the [live site](https://akallam04.github.io/byld-commerce-website/) rather than in a still.
 
 ## Built in two passes
 
